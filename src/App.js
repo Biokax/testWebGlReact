@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { Unity, useUnityContext } from "react-unity-webgl";
+
 
 function App() {
+  
+  const { unityProvider } = useUnityContext({
+    loaderUrl: "./CerealisWebGLv2/build/CerealisWebGLv2.loader.js",
+    dataUrl: "./CerealisWebGLv2/build/CerealisWebGLv2.data",
+    frameworkUrl: "./CerealisWebGLv2/build/CerealisWebGLv2.framework.js",
+    codeUrl: "./CerealisWebGLv2/build/CerealisWebGLv2.wasm",
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>TEST WEB REACT</h1>
+      <Unity 
+      unityProvider={unityProvider}
+      style={{
+        width: "1000px",
+        height: "800px",
+      }}
+      />
     </div>
   );
 }
